@@ -1,0 +1,8 @@
+transformers
+pydub
+miniaudio
+SpeechRecognition
+torch
+PyAudio==0.2.13
+io
+ffmpeg-python
