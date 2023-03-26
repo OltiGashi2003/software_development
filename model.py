@@ -6,7 +6,7 @@ from pydub import AudioSegment
 
 # print(sr.Microphone.list_microphone_names()) # testing your mic's on your pc
 
-checkout = "facebook/wav2vec2-large-960h"
+checkout = "yongjian/wav2vec2-large-a"
 
 tokenizer = Wav2Vec2Processor.from_pretrained(checkout)
 model = Wav2Vec2ForCTC.from_pretrained(checkout)
@@ -27,7 +27,8 @@ with sr.Microphone(sample_rate=16000) as source:
         logits = model(inputs).logits
         tokens = torch.argmax(logits, axis = -1)
         text = tokenizer.batch_decode(tokens)
+        text = str(text).lower()
         
-        print('you said: ', str(text).lower())
+        print('you said: ', text)
 
 
